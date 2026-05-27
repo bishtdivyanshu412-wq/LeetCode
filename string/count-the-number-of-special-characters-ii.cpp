@@ -16,9 +16,7 @@ public:
             }
         }
         else if(words[i]>='A' && words[i]<='Z'){
-            if(big[words[i]-'A']+1 <=small[words[i]-'A']){
-                big[words[i]-'A']++;
-            }
+            big[words[i]-'A']++;
         }
      } 
      for(int i =0;i<small.size();i++){
