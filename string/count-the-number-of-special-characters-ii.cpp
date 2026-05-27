@@ -20,8 +20,8 @@ public:
         }
      } 
      for(int i =0;i<small.size();i++){
-        if(small[i]>0){
-        count += big[i];
+        if(small[i]>0  && big[i]!=0){
+        count ++;
         }
      }  
      return count;
