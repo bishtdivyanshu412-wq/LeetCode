@@ -9,13 +9,12 @@ public:
            ans[words[i]-'a']++;
          }
         else if(words[i]>='A' && words[i]<='Z'){
-            if(res[words[i]-'A']+1 <= ans[words[i]-'A'] )
             res[words[i]-'A']++;
         }
      }
      int count = 0;
      for(int i = 0 ; i<res.size();i++){
-        if(res[i]!=0) count++;
+        if(res[i]!=0 && ans[i]!=0) count++;
      }
      return count;
     }
