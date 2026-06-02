@@ -1,12 +1,18 @@
 class Solution {
 public:
-    bool increasingTriplet(vector<int>& nums) {
-      int n = nums.size();
-      for(int i =0;i<n-2;i++){
-        if(nums[i]<nums[i+1] && nums[i+1]<nums[i+2]){
-            return true;
+    bool increasingTriplet(vector<int>& nums) 
+    {
+        int first_small = INT_MAX;
+        int second_small = INT_MAX;
+        for(int i=0;i<nums.size();i++)
+        {
+            if(nums[i]<=first_small)
+                first_small=nums[i];
+            else if( nums[i]<= second_small )
+                second_small= nums[i];
+            else
+                return true;
         }
-      }
-      return false;  
+        return false;
     }
 };
