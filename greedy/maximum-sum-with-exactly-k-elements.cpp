@@ -9,7 +9,9 @@ public:
      } 
      for(int i =0;i<k;i++){
           sum+=maxi;
+        for(int i =0;i<n;i++){
       if(nums[i] == maxi ) nums[i] = maxi+1;
+        }
       maxi = maxi+1;
      }  
      return sum;
