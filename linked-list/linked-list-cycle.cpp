@@ -9,6 +9,7 @@
 class Solution {
 public:
     bool hasCycle(ListNode *head) {
+        if(head == NULL || head->next == NULL) return false;
     ListNode* temp = head ;
     while(temp->val != INT_MIN && temp->next != NULL){
      temp->val = INT_MIN;
