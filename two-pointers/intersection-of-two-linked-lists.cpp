@@ -12,39 +12,14 @@ public:
       ListNode* temp1 = head1;
       ListNode* temp2 = head2;
 
-      int count1 = 0;
-      int count2 =0;
-
-      while(temp1 != NULL){
-        count1++;
+      while(temp1 != temp2){
         temp1 = temp1->next;
-      } 
-
-      while(temp2 != NULL){
-        count2++;
         temp2 = temp2->next;
-      }
 
-      int delcount = abs(count1-count2);
-        ListNode* curr1 = head1;
-        ListNode* curr2 = head2;
-      if(count1>count2){
-        while(delcount>0){
-         curr1 = curr1->next;
-         delcount--;
-        }
-      }
-      else{
-        while(delcount>0){
-         curr2 = curr2->next;
-         delcount--;
-        }
-      }
+        if(temp1 == temp2) return temp1;
 
-      while(curr1 != NULL && curr2 != NULL){
-        if(curr1 == curr2) return curr1;
-        curr1 = curr1->next;
-        curr2 = curr2->next;
+        if(temp1 == NULL) temp1 = head2;
+        if(temp2 == NULL) temp2 = head1;
       }
       return NULL;
     }
