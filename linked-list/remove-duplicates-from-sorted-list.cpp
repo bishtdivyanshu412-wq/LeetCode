@@ -22,14 +22,8 @@ public:
         }
         temp = temp->next;
       }
-      ListNode* curr = head;
+      prev->next = NULL;
 
-      
-      while(curr != NULL && curr->next != NULL){
-        if(curr->val == curr->next->val) break;
-          curr = curr->next;
-      }
-      curr->next = NULL;
       return head;
     }
 };
