@@ -1,21 +1,19 @@
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode(int x) : val(x), next(NULL) {}
- * };
- */
 class Solution {
 public:
     ListNode *detectCycle(ListNode *head) {
-      if(head == NULL || head->next == NULL) return NULL;
-    ListNode* temp = head ;
-    while(temp->val != INT_MIN && temp->next != NULL){
-     temp->val = INT_MIN;
-     temp = temp->next;
-    }   
-    if(temp->val == INT_MIN) return temp;
-    return NULL;  
+        unordered_map<ListNode*, int> mpp;
+
+        ListNode* temp = head;
+
+        while(temp != NULL) {
+            if(mpp[temp] == 1) {
+                return temp;
+            }
+
+            mpp[temp] = 1;
+            temp = temp->next;
+        }
+
+        return NULL;
     }
 };
