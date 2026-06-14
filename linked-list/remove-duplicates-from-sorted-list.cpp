@@ -12,24 +12,24 @@ class Solution {
 public:
     ListNode* deleteDuplicates(ListNode* head) {
         if(head == NULL || head->next == NULL) return head;
-      ListNode* dummy = new ListNode(-1);
-      ListNode* temp1 = dummy;
-      ListNode* temp = head;
       ListNode* prev = head;
-      
-      ListNode* newnode = new ListNode(temp->val);
-      temp1->next = newnode;
-      temp1 = temp1->next;
+      ListNode* temp = head->next;
+
       while(temp != NULL){
-        if(prev->val != temp->val){
-        ListNode* newnode = new ListNode(temp->val);
-        temp1->next = newnode;
-        temp1 = temp1->next;
-        prev = temp;
+        if(prev->val != temp->val ){
+            prev->next = temp;
+            prev = temp;
         }
         temp = temp->next;
-      }  
-      temp1->next = NULL;
-      return dummy->next;
+      }
+      ListNode* curr = head;
+
+      
+      while(curr != NULL && curr->next != NULL){
+        if(curr->val == curr->next->val) break;
+          curr = curr->next;
+      }
+      curr->next = NULL;
+      return head;
     }
 };
