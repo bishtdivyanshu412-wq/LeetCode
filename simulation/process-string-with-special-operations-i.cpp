@@ -12,7 +12,7 @@ public:
          }
         }
         else if(s[i] == '%') reverse(result.begin(),result.end());
-        else result.push_back(s[i]);
+        else if(s[i]>='a' && s[i]<='z')result.push_back(s[i]);
        } 
        return result;
     }
