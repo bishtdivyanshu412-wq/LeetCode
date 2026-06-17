@@ -2,22 +2,21 @@ class Solution {
 public:
     char processStr(string s, long long k) {
         int n = s.size();
-
         vector<long long> len(n + 1, 0);
 
         for (int i = 0; i < n; i++) {
-            char ch = s[i];
+            char c = s[i];
 
-            if (ch >= 'a' && ch <= 'z') {
-                len[i + 1] = min(k + 1, len[i] + 1);
+            if ('a' <= c && c <= 'z') {
+                len[i + 1] = len[i] + 1;
             }
-            else if (ch == '*') {
+            else if (c == '*') {
                 len[i + 1] = max(0LL, len[i] - 1);
             }
-            else if (ch == '#') {
-                len[i + 1] = min(k + 1, len[i] * 2);
+            else if (c == '#') {
+                len[i + 1] = min((long long)1e15, len[i] * 2);
             }
-            else if (ch == '%') {
+            else { 
                 len[i + 1] = len[i];
             }
         }
@@ -25,23 +24,21 @@ public:
         if (k >= len[n]) return '.';
 
         for (int i = n - 1; i >= 0; i--) {
-            char ch = s[i];
+            char c = s[i];
 
-            if (ch >= 'a' && ch <= 'z') {
-                if (k == len[i]) return ch;
+            if ('a' <= c && c <= 'z') {
+                if (k == len[i]) return c;
             }
-            else if (ch == '*') {
-                if (len[i] > len[i + 1]) {
-                    
-                    if (k == len[i + 1]) return '.';
-                }
+            else if (c == '#') {
+                if (k >= len[i]) k -= len[i];
             }
-            else if (ch == '#') {
-                long long oldLen = len[i];
-                if (k >= oldLen) k -= oldLen;
-            }
-            else if (ch == '%') {
+            else if (c == '%') {
                 k = len[i] - 1 - k;
+            }
+            else {
+                if (len[i] > 0 && k == len[i] - 1) {
+                    return '.';
+                }
             }
         }
 
