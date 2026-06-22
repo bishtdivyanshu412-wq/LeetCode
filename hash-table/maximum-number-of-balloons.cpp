@@ -14,8 +14,6 @@ public:
             else if(text[i] == 'n') n++;
         }
 
-        int mini = min(min(min(a,b),l),min(o,n));
-        if(mini == l || mini == o) return mini/2;
-        return mini;
+        return min({b,a,l/2,o/2,n});
     }
 };
