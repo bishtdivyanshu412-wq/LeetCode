@@ -6,7 +6,6 @@ public:
         int l =0;
         int o = 0;
         int n =0;
-         if(text == "ballon") return 0;
         for(int i =0;i<text.size();i++){
             if(text[i] == 'a') a++;
             else if(text[i] == 'b') b++;
@@ -16,7 +15,7 @@ public:
         }
 
         int mini = min(min(min(a,b),l),min(o,n));
-        if(mini == l || mini == 0) return mini/2;
+        if(mini == l || mini == o) return mini/2;
         return mini;
     }
 };
