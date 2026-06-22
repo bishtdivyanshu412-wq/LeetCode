@@ -1,26 +1,22 @@
 class Solution {
 public:
-    int maxNumberOfBalloons(string s) {
-     string target = "balloon"; 
-    
-     int count = 0;
-
-      while(true){
-     for(int i =0;i<target.size();i++){
-        int count1 =0;
-        for(int j =0;j<s.size();j++){
-            if(target[i] == s[j]) {
-                 s[j] = '#';
-                 count1++;
-                 break;
-            }
+    int maxNumberOfBalloons(string text) {
+        int b = 0;
+        int a =0;
+        int l =0;
+        int o = 0;
+        int n =0;
+         if(text == "ballon") return 0;
+        for(int i =0;i<text.size();i++){
+            if(text[i] == 'a') a++;
+            else if(text[i] == 'b') b++;
+            else if(text[i] == 'l') l++;
+            else if(text[i] == 'o') o++;
+            else if(text[i] == 'n') n++;
         }
-        if(count1 == 0) return count;
-     }
-      count++;
-     } 
-     return 0;  
+
+        int mini = min(min(min(a,b),l),min(o,n));
+        if(mini == l || mini == 0) return mini/2;
+        return mini;
     }
-  
-}; 
-  
+};
