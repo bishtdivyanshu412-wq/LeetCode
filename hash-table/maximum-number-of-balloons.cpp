@@ -2,7 +2,7 @@ class Solution {
 public:
     int maxNumberOfBalloons(string s) {
      string target = "balloon"; 
-    if(s == target ) return 0;
+    
      int count = 0;
 
       while(true){
