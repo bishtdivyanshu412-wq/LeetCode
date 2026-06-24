@@ -14,7 +14,7 @@ public:
             j++;
         }
         else if(g[i]>s[j]){
-            i++;
+            j++;
         }
       } 
       return count; 
