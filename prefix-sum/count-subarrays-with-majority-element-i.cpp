@@ -6,19 +6,20 @@ public:
 
       for(int i =0;i<n;i++){
         for(int j =i;j<n;j++){
-            if(i==j && nums[i] == target){
+            if((j-i == 0) && nums[i] == target){
                 subcount++;
             }
-            int count =0;
-            int candidate =0;
-            for(int k = i;k<j;k++){
-             if(count == 0) candidate = nums[k];
-             if(nums[i] == candidate) count++;
-             else count--;
+            else{
+             int count = 0;
+             for(int k =i;k<=j;k++){
+                if(nums[k] == target) count++;
+             }
+
+             int size = j-i+1;
+             if(count>size/2) subcount++;
+            } 
             }
-            if(candidate == target) subcount++;
-        }
-      }  
+        }  
       return subcount;
     }
 };
