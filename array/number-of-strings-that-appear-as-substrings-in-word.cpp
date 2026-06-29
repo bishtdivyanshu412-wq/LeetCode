@@ -1,24 +1,18 @@
 class Solution {
 public:
-    int numOfStrings(vector<string>& patterns, string words) {
-     int n = patterns.size();
+    int numOfStrings(vector<string>& patterns, string word) {
 
-     int count = 0;
+        int count = 0;
 
-     for(int i = 0 ;i<n;i++){
-        for(int j =0;j<patterns[i].size();j++){
-            bool flag = false;
-            for(int k =0;k<words.size();k++){
-            if(words[k] == patterns[i][j]){
-               flag = true; 
-            }
-            }
-            if(flag == true){
+        for (int i = 0; i < patterns.size(); i++) {
+
+            int pos = word.find(patterns[i]);
+
+            if (pos != string::npos) {
                 count++;
-                break;
             }
         }
-     }
-     return count;   
+
+        return count;
     }
 };
