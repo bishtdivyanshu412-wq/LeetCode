@@ -12,6 +12,6 @@ public:
              max = nums[i];
         }
       }
-      return (max-1)*(smax-1);  
+      return 1ll*(max-1)*(smax-1);  
     }
 };
