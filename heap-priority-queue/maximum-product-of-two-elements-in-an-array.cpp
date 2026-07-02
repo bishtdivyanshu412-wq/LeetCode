@@ -2,8 +2,16 @@ class Solution {
 public:
     int maxProduct(vector<int>& nums) {
         
-      sort(nums.begin(),nums.end());
+      int smax = INT_MIN;
+      int max = INT_MIN;
       int n = nums.size();
-      return ((nums[n-1]-1)*(nums[n-2]-1));  
+
+      for(int i =0;i<n;i++){
+        if(nums[i]>=max){
+             smax = max;
+             max = nums[i];
+        }
+      }
+      return (max-1)*(smax-1);  
     }
 };
