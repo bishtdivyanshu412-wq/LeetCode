@@ -11,28 +11,48 @@
 class Solution {
 public:
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-      ListNode* dummy = new ListNode(-1);
-      ListNode* temp1 = l1;
-      ListNode* temp2 = l2;
-      ListNode* curr = dummy;
-      int carry = 0;
-      while(temp1 != NULL || temp2!=NULL){
-        int sum = carry;
-        if(temp1) sum = sum + temp1->val;
-        if(temp2) sum = sum + temp2->val;
-        ListNode*  newnode  = new ListNode(sum%10);
-        carry = sum/10;
-        curr->next = newnode;
-        curr = curr->next;
+        ListNode* dummy = new ListNode(-1);
+        ListNode* temp = l1;
+        ListNode* temp2 = l2;
+        ListNode* curr = dummy;
+        int carry = 0;
+        while(temp != NULL && temp2 != NULL){
+            int sum = 0;
+            sum += carry;
+            sum += temp->val + temp2->val;
+            ListNode* newnode = new ListNode(sum%10);
+            curr->next = newnode;
+            carry = sum/10;
 
-        if(temp1) temp1 = temp1->next;
-        if(temp2) temp2 = temp2->next;
+            temp = temp->next;
+            temp2 = temp2->next;
+            curr = curr->next;
+        }
+        while(temp != NULL){
+            int sum = temp->val+carry;
+            ListNode * newnode = new ListNode(sum%10);
+            curr->next = newnode;
+            carry = sum/10;
 
-      }  
-      if(carry){
-        ListNode* newnode = new ListNode(carry);
-        curr->next = newnode;
-      }
-      return dummy->next;
+            temp = temp->next;
+            curr = curr->next;
+        }
+        while(temp2 != NULL){
+            int sum = temp2->val + carry;
+            ListNode * newnode = new ListNode(sum%10);
+            curr->next = newnode;
+            carry = sum/10;
+
+            temp2 = temp2->next;
+            curr = curr->next;
+        }
+        if(carry){
+            ListNode* newnode = new ListNode(carry%10);
+            curr->next = newnode;
+            carry/10;
+            curr = curr->next;
+        }
+        curr->next = NULL;
+        return dummy->next;
     }
 };
