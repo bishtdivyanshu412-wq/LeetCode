@@ -3,6 +3,7 @@ public:
     bool isPowerOfFour(int n) {
 
         if(n<=0) return false;
+        if(n==2 || n==3) return false;
         int count = 0;
         vector<int> ans;
 
