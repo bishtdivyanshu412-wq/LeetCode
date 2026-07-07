@@ -4,6 +4,7 @@ public:
         if(n==-1) return false;
         if(n==1) return true;
         int prev = 0;
+        if(n%3 != 0) return false;
     while(n>1){
     prev = n;
     n = n/3;
