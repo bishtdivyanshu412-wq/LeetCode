@@ -32,11 +32,15 @@ public:
         j++;      
       }
       while(j<goal1.size()){
+        if(goal1[j] == 1){
         count++;
+        }
         j++;
       }
       while(i<start1.size()){
+        if(start1[i] == 1){
         count++;
+        }
         i++;
       }
       return count;
