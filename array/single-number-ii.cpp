@@ -13,7 +13,7 @@ public:
        while(low<=high){
         int mid = low+(high-low)/2;
 
-        if(nums[mid-1] == nums[mid] && nums[mid+1] == nums[mid]) return nums[mid];
+        if(nums[mid-1] != nums[mid] && nums[mid+1] != nums[mid]) return nums[mid];
 
         else if(mid%2 == 0) high = mid-1;
         else low = mid+1;
