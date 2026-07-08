@@ -1,14 +1,22 @@
 class Solution {
 public:
     int singleNumber(vector<int>& nums) {
-        int n = nums.size();
-        map<int,int>mpp;
-       for(int i=0;i<n;i++){
-        mpp[nums[i]]++;
+       int n = nums.size(); 
+       sort(nums.begin(),nums.end());
+       if(nums[0]!=nums[1]) return nums[0];
+       if(nums[n-1]!=nums[n-2]) return nums[n-1];
+
+       int low  =1;
+       int high = n-2;
+
+       while(low<=high){
+        int mid = low+(high-low)/2;
+
+        if(nums[mid-1] == nums[mid] && nums[mid+1] == nums[mid]) return nums[mid];
+
+        else if(mid%2 == 0) high = mid-1;
+        else low = mid+1;
        }
-       for(auto it : mpp){
-        if(it.second == 1) return it.first;
-       }
-      return -1;  
+      return -1;
     }
 };
