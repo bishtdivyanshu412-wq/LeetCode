@@ -1,7 +1,7 @@
 class Solution {
 public:
     int bitwiseComplement(int n) {
-        if(n==0) return 0;
+        if(n==0) return 1;
     int count = 0;
     int num = n;
     while(n!=0){
