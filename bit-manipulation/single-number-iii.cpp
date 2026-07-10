@@ -1,17 +1,24 @@
 class Solution {
 public:
     vector<int> singleNumber(vector<int>& nums) {
-      map<int,int>mpp;
-     vector<int>ans;
-      int n = nums.size();
+        int xr = 0;
 
-      for(int i =0;i<n;i++){
-        mpp[nums[i]]++;
-      } 
+       
+        for (int num : nums)
+            xr ^= num;
 
-      for(auto it : mpp){
-        if(it.second == 1) ans.push_back(it.first);
-      } 
-      return ans;
+       
+        int rightMost = xr & (-xr);
+
+        int a = 0, b = 0;
+
+        for (int num : nums) {
+            if (num & rightMost)
+                a ^= num;
+            else
+                b ^= num;
+        }
+
+        return {a, b};
     }
 };
