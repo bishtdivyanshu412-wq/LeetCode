@@ -1,6 +1,6 @@
 class Solution {
 public:
     int divide(int dividend, int divisor) {
-       return dividend/divisor ;
+       return 1ll * dividend/divisor ;
     }
 };
