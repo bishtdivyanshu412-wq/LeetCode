@@ -2,8 +2,14 @@ class Solution {
 public:
     bool isArraySpecial(vector<int>& nums) {
      int n = nums.size();
-
+     if(n==1) return true;
+      
+     if(n == 2){
+      if(nums[0]%2 == 0 && nums[1]%2  == 0) return false ;
+      else if(nums[0]%2 != 0 && nums[1]%2 != 0) return false;
+     }
      if(nums[0]%2 == 0){
+
         for(int i =0;i<n;i = i+2){
             if(nums[i]%2 != 0) return false;
         }
