@@ -3,7 +3,7 @@ public:
     vector<int> sequentialDigits(int low, int high) {
 
         vector<int>ans ;
-      for(int i = low+1 ;i<high;i++){
+      for(int i = low ;i<high;i++){
         int prev = i%10;
         int num = i;
         bool flag = true;
