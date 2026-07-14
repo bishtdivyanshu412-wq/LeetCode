@@ -8,7 +8,7 @@ public:
         mpp[nums[i]]++;
       } 
       vector<int> ans;
-      int prev = -1;
+      int prev = INT_MIN;
       for(int i =0;i<n;i++){
         if(mpp[nums[i]] > 0 && prev != nums[i]){
             if(mpp[nums[i]] == 1) ans.push_back(nums[i]);
