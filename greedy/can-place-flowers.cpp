@@ -2,7 +2,10 @@ class Solution {
 public:
     bool canPlaceFlowers(vector<int>& nums, int n) {
        int m = nums.size();
-
+       if(m == 1 && n==1) {
+        if(nums[0] == 0) return true;
+        else return false;
+       }
        if(nums[0] == 0 && nums[1] == 0) {
         n--;
         nums[0] = 1;
