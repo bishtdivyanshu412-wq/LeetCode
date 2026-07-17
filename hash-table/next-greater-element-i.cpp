@@ -4,8 +4,9 @@ public:
        int n = nums1.size();
        int m = nums2.size();
 
+       unordered_map<int,int>mpp;
        stack<int>st;
-       vector<int>ans(m,INT_MIN);
+       
 
        for (int i = m-1;i>=0;i--){
 
@@ -14,23 +15,19 @@ public:
         }
 
         if(st.empty()) {
-            ans[i] = -1;
-            st.push(nums2[i]);
+            mpp[nums2[i]] = -1;
         }
         else{
-            ans[i] = st.top();
+            mpp[nums2[i]] = st.top();
+            
+        }
             st.push(nums2[i]);
-        }
        }
+       vector<int>ans;
 
-       for(int i =0;i<n;i++){
-        for(int j =0;j<m;j++){
-          if(nums1[i] == nums2[j]) {
-            nums1[i] = ans[j];
-            break;
-          }
-        }
+       for(int x : nums1){
+        ans.push_back(mpp[x]);
        }
-       return nums1;
+       return ans;
     }
 };
