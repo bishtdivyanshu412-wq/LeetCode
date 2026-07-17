@@ -7,7 +7,7 @@ public:
     stack<int>minst;
     int mini = INT_MAX;
     void push(int value) {
-        if(value<mini) {
+        if(minst.empty() || value <= minst.top()) {
             minst.push(value);
             mini = value;
         };
