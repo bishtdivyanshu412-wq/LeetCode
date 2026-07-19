@@ -7,7 +7,7 @@ public:
 
        for(int i =0;i<n;i++){
         int y = i;
-        int j = i+1;
+        int j = (i+1)%n;
         while(j!=y){
            if(nums[i]<nums[j]){
             ans[i] = nums[j];
