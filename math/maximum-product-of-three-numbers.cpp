@@ -1,49 +1,29 @@
 class Solution {
 public:
     int maximumProduct(vector<int>& nums) {
-      int n = nums.size();
-      int fmax = INT_MIN;
-      int smax = INT_MIN;
-      int tmax = INT_MIN;
+        int fmax = INT_MIN, smax = INT_MIN, tmax = INT_MIN;
+        int fmin = INT_MAX, smin = INT_MAX;
 
-      sort(nums.begin(),nums.end());
+        for (int x : nums) {
+            if (x > fmax) {
+                tmax = smax;
+                smax = fmax;
+                fmax = x;
+            } else if (x > smax) {
+                tmax = smax;
+                smax = x;
+            } else if (x > tmax) {
+                tmax = x;
+            }
 
-      int i =0;
-      int j = n-1;
-
-     
-    if(abs(nums[i])>=abs(nums[j])) {
-        fmax = nums[i];
-        i++;
-    }
-    else{
-        fmax =  nums[j];
-        j--;
-    }
-
-    if(abs(nums[i])>=abs(nums[j])){
-      smax = nums[i];
-      i++;
-    }
-    else{
-        smax = nums[j];
-        j--;
-    }
-    
-    if(i == 2){
-        tmax = nums[j];
-        j--;
-    } 
-    else if(i!=2){
-        if(abs(nums[i])>=abs(nums[j])){
-            tmax = nums[i];
-            i++;
+            if (x < fmin) {
+                smin = fmin;
+                fmin = x;
+            } else if (x < smin) {
+                smin = x;
+            }
         }
-        else {
-            tmax = nums[j];
-            j--;
-        }
-    }
-     return 1ll * (fmax*tmax*smax);
+
+        return max(fmax * smax * tmax, fmax * fmin * smin);
     }
 };
