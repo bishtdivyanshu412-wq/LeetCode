@@ -20,7 +20,7 @@ public:
                 if(count == 1){
                     s[k] = 'a'+i;
                     count = count  >> 1;
-                    k++;
+                   
                 }
                 s[k] = 'a'+i;
                 s[j] = 'a'+i;
