@@ -1,19 +1,19 @@
 class Solution {
 public:
     int sumSubarrayMins(vector<int>& arr) {
-      int n = arr.size();
+        int n = arr.size();
+        const int MOD = 1e9 + 7;
 
-      long long sum = 0;
+        long long sum = 0;
 
-      for(int i =0;i<n;i++){
-        for(int j = i ;j<n;j++){
-            long long mini = arr[j];
-            for(int k = i ; k<=j;k++){
-                if(arr[k]<mini) mini = arr[k];
+        for (int i = 0; i < n; i++) {
+            long long mini = arr[i];
+            for (int j = i; j < n; j++) {
+                mini = min(mini, (long long)arr[j]);
+                sum = (sum + mini) % MOD;
             }
-            sum += mini;
         }
-      } 
-      return sum; 
+
+        return sum;
     }
 };
