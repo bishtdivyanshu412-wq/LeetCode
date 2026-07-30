@@ -13,7 +13,7 @@ public:
 
             if(abs(ans-arr2[mid])<=target) return true;
             else if(abs(ans-arr2[mid])>target) high = mid-1;
-            else low = mid+1; 
+            else low = mid+1;
         } 
         return false;
     }
@@ -25,7 +25,7 @@ public:
       sort(arr2.begin(),arr2.end());
 
       for(int i =0;i<n;i++){
-        if(bs(arr2,arr1[i],d)){
+        if(bs(arr2,arr1[i],d)==false){
             count++;
         }
       }
