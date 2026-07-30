@@ -1,34 +1,37 @@
 class Solution {
 public:
+    bool bs(vector<int>& arr2, int x, int d) {
+        int low = 0;
+        int high = arr2.size() - 1;
 
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
 
-    bool bs(vector<int>& arr2 , int ans,int target){
-        int k = arr2.size();
+            if (arr2[mid] < x)
+                low = mid + 1;
+            else
+                high = mid - 1;
+        }
 
-        int low = 0 ;
-        int high = k-1;
+        if (low < arr2.size() && abs(arr2[low] - x) <= d)
+            return true;
 
-        while(low<=high){
-            int mid = low+(high-low)/2;
+        if (low > 0 && abs(arr2[low - 1] - x) <= d)
+            return true;
 
-            if(abs(ans-arr2[mid])<=target) return true;
-            else if(abs(ans-arr2[mid])>target) high = mid-1;
-            else low = mid+1;
-        } 
         return false;
     }
+
     int findTheDistanceValue(vector<int>& arr1, vector<int>& arr2, int d) {
-      int n = arr1.size();
-      int m = arr2.size();
-      int count = 0;
+        sort(arr2.begin(), arr2.end());
 
-      sort(arr2.begin(),arr2.end());
+        int count = 0;
 
-      for(int i =0;i<n;i++){
-        if(bs(arr2,arr1[i],d)==false){
-            count++;
+        for (int x : arr1) {
+            if (!bs(arr2, x, d))
+                count++;
         }
-      }
-      return (n-count);  
+
+        return count;
     }
 };
