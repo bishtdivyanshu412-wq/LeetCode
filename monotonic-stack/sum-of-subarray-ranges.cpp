@@ -10,7 +10,7 @@ public:
           if(nums[j]>maxi) maxi = nums[j];
           if(nums[j]<mini) mini = nums[j];
 
-           sum += maxi - mini;
+           sum += 1ll*(maxi - mini);
         }
      }   
      return sum;
