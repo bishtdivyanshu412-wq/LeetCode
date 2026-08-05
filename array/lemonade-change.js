@@ -21,7 +21,10 @@ var lemonadeChange = function(bills) {
                 count20 = count20+1;
                 count10 = count10 -1;
                 count5 = count5-1;
-                count5 = count5+1;
+                
+            }
+            else if (count5 >= 3) {
+             count5 -= 3;
             }
             else{
                 return false;
