@@ -3,20 +3,27 @@
  * @return {boolean}
  */
 var lemonadeChange = function(bills) {
-    let count = 0;
     let n = bills.length;
+    let count5 = 0;
+    let count10 = 0;
+    let count20 = 0;
     for(let i =0;i<n;i++){
-        if(bills[i] === 5) count = count+bills[i];
+        if(bills[i] === 5) count5 = count5 + 1;
         else if(bills[i] === 10){
-            if((bills[i]-5)>count) return false;
-            else count = count - (bills[i]-5)+5;
+           if(count5 >= 1) {
+            count10 = count10 + 1;
+            count5 = count5-1;
+           }
+           else return false;
         }
         else{
-            if(bills[i]-5>count){
-                return false;
+            if(count5>=1 && count10>=1){
+                count20 = count20+1;
+                count10 = count10 -1;
+                count5 = count5-1;
             }
             else{
-                count = count-(bills[i]-5)+5;
+                return false;
             }
         }
     }
