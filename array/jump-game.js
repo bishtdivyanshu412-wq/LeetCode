@@ -5,6 +5,7 @@
 var canJump = function(nums) {
    let n  = nums.length;
    let prev = nums[0];
+   if(n===1) return true;
 
    for(let i = 0;i<n;i++){
      prev = prev-1;
