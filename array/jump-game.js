@@ -9,9 +9,9 @@ var canJump = function(nums) {
 
    for(let i = 0;i<n;i++){
      prev = prev-1;
+    if(prev <0 ) return false;
     if(prev + i >= n-1) return true;
     if(prev < nums[i]) prev = nums[i];
-    if(prev <0 && i != n-1) return false;
    }
    return false;
 };
