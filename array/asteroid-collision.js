@@ -12,13 +12,13 @@ var asteroidCollision = function(asteriods) {
         ans.push(asteriods[i]);
     }
     else{
-        while(ans.length !== 0 && ans[ans.length-1]<Math.abs(asteriods[i])){
+        while(ans.length !== 0 && ans[ans.length-1]<Math.abs(asteriods[i]) && ans[ans.length-1]>0){
             ans.pop();
         }
         if(Math.abs(asteriods[i]) === ans[ans.length-1]){
             ans.pop();
         }
-        else if(ans.length === 0 || ans[ans.lentgh-1]<0) ans.push(asteriods[i]); 
+        else if(ans.length === 0 || ans[ans.length-1]<0) ans.push(asteriods[i]); 
     }
    } 
    return ans;
