@@ -8,23 +8,18 @@ public:
         for (int i = 0; i <= n; i++) {
             int curr = (i == n) ? 0 : h[i];
 
-            while (!st.empty() && curr < h[st.top()]) {
+            while (!st.empty() && h[st.top()] > curr) {
                 int last = st.top();
                 st.pop();
 
-                int width;
-
-                if (st.empty())
-                    width = i;
-                else
-                    width = i - st.top() - 1;
+                int left = st.empty() ? -1 : st.top();
+                int width = i - left - 1;
 
                 int area = h[last] * width;
                 maxarea = max(maxarea, area);
             }
 
-            if (st.empty() || curr > h[st.top()])
-                st.push(i);
+            st.push(i);
         }
 
         return maxarea;
