@@ -2,7 +2,7 @@ class Solution {
 public:
     int myAtoi(string s) {
         int n = s.size();
-        int ans = 0;
+        long long ans = 0;
         vector<int> result;
 
         int i = 0;
@@ -32,6 +32,12 @@ public:
         // Build number
         for (int j = 0; j < result.size(); j++) {
             ans = ans * 10 + result[j];
+
+            if (!negative && ans > INT_MAX)
+                return INT_MAX;
+
+            if (negative && ans > 2147483648LL)
+                return INT_MIN;
         }
 
         // Apply sign
