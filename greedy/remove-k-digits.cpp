@@ -1,38 +1,50 @@
 class Solution {
 public:
     string removeKdigits(string num, int k) {
-     int n = num.size();
-     stack<char>st;
-     if(n==k) return "0";
-     string ans = "";
-     int i =0;
-    while(i<n){
-       
-        while(!st.empty() && st.top() > num[i] && k>0){
+        int n = num.size();
+        stack<char> st;
+
+        // Process digits from left to right
+        for (int i = 0; i < n; i++) {
+
+            while (!st.empty() && k > 0 && st.top() > num[i]) {
+                st.pop();
+                k--;
+            }
+
+            st.push(num[i]);
+        }
+
+        // If k is still remaining, remove from the end
+        while (k > 0) {
             st.pop();
             k--;
         }
-        st.push(num[i]);
-        i++;
-     }  
-     while(!st.empty()) {
-    ans += st.top();
-    st.pop();
-}
-    reverse(ans.begin(), ans.end());
 
-    int j = 0;
+        // Convert stack to string
+        string ans = "";
 
-while(j < ans.size() && ans[j] == '0') {
-    j++;
-}
+        while (!st.empty()) {
+            ans += st.top();
+            st.pop();
+        }
 
-ans = ans.substr(j);
+        reverse(ans.begin(), ans.end());
 
-if(ans.empty())
-    return "0";
+        // Remove leading zeroes
+        int i = 0;
 
-return ans;
-     return ans;
+        while (i < ans.size() && ans[i] == '0') {
+            i++;
+        }
+
+        ans = ans.substr(i);
+
+        // If everything was zero
+        if (ans.empty()) {
+            return "0";
+        }
+
+        return ans;
     }
 };
