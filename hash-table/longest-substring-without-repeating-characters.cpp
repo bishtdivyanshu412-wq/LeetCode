@@ -3,21 +3,20 @@ public:
     int lengthOfLongestSubstring(string s) {
         int n = s.size();
         int maxlen = 0;
-        unordered_map<char, int> mpp;
+       vector<int>hash(256,-1);
 
         int i = 0;
         int j = 0;
 
         while (j < n) {
-            if (mpp[s[j]] == 0) {
-                mpp[s[j]]++;
-                maxlen = max(maxlen, j - i + 1);
-                j++;
+            if(hash[s[j]] != -1){
+                if(hash[s[j]]>=i){
+                    i = hash[s[j]]+1;
+                }
             }
-            else {
-                mpp[s[i]]--;
-                i++;
-            }
+            maxlen = max(maxlen,j-i+1);
+            hash[s[j]] = j;
+            j++;
         }
 
         return maxlen;
