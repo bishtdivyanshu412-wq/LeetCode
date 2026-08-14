@@ -11,7 +11,7 @@ public:
 
      while(j<n){
         if(mpp[s[j]] <2){
-            mpp[s[i]]++;
+            mpp[s[j]]++;
             maxlen = max(maxlen,j-i+1);
             j++;
         }
