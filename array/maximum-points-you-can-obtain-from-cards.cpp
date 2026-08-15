@@ -11,11 +11,12 @@ public:
             lsum += c[i];
         }
         maxsum = lsum;
-
+        int j =0;
         for(int i = k-1;i>=0;i--){
             lsum -= c[i];
-            rsum += c[n-1-i];
+            rsum += c[n-1-j];
             maxsum = max(maxsum,lsum+rsum);
+            j++;
         }
         return maxsum;
     }
