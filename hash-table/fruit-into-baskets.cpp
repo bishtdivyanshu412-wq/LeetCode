@@ -18,6 +18,8 @@ public:
         while(nums[i] == b1){
             i++;
         }
+        b1 = b2;
+        b2 = nums[j];
        }
        maxcount = max(maxcount,j-i+1);
        j++;
