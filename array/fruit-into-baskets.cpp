@@ -1,28 +1,27 @@
 class Solution {
 public:
-    int totalFruit(vector<int>& fruits) {
-        int n = fruits.size();
+    int totalFruit(vector<int>& nums) {
+      int n = nums.size();
 
+      int b1 = nums[0];
+      int b2 = -1;
 
-        int maxcount = 0;
+      int maxcount = 0;
 
-        for(int i =0;i<n;i++){
-            int count = 0;
-           int b1 = fruits[i];
-           int b2 = -1;
-            for(int j =i;j<n;j++){
-                if(b2 == -1 && fruits[j] != b1){
-                    b2 = fruits[j];
-                    count++;
-                }
-                else if(b1 == fruits[j] || b2 == fruits[j]){
-                    count++;   
-                }
-                else break;
-            }
-               maxcount = max(maxcount,count);
+      int i = 0;
+      int j = 1;
+      while(j<n){
+       if(b2 == -1 && nums[j] != b1){
+        b2 = nums[i];
+       }
+       else if(b1 != nums[j] || b2 !=nums[j]) {
+        while(nums[i] == b1){
+            i++;
         }
-
-        return maxcount;
+       }
+       maxcount = max(maxcount,j-i+1);
+       j++;
+      }  
+      return maxcount;
     }
 };
