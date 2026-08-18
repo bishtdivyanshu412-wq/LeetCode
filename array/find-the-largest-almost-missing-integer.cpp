@@ -11,7 +11,7 @@ public:
             ans[nums[j]]++;
         }
        }
-        if(n==k) return nums[0];
+        if(n==k) return *max_element(nums.begin(),nums.end());
         for(int k = ans.size()-1;k>=0;k--){
             if(ans[k] == 1){
                 max = k;
