@@ -1,24 +1,29 @@
 class Solution {
 public:
     int largestInteger(vector<int>& nums, int k) {
-       int n = nums.size();
+        int n = nums.size();
+        vector<int> count(51, 0);
 
-       int max = -1;
+        for (int i = 0; i <= n - k; i++) {
+            vector<bool> visited(51, false);
 
-        vector<int>ans(51,0);
-       for(int i=0;i<=n-k;i++){
-        for(int j =i;j<(i+k);j++){
-            ans[nums[j]]++;
-        }
-       }
-        if(n==k) return *max_element(nums.begin(),nums.end());
-        for(int k = ans.size()-1;k>=0;k--){
-            if(ans[k] == 1){
-                max = k;
-                break;
+            for (int j = i; j < i + k; j++) {
+                visited[nums[j]] = true;
+            }
+
+            for (int x = 0; x <= 50; x++) {
+                if (visited[x]) {
+                    count[x]++;
+                }
             }
         }
 
-       return max;
+        for (int x = 50; x >= 0; x--) {
+            if (count[x] == 1) {
+                return x;
+            }
+        }
+
+        return -1;
     }
 };
