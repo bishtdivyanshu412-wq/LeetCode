@@ -7,15 +7,15 @@ public:
 
         int sum = 0;
         map<int,int>mpp;
-        mpp[nums[0]] = 1;
+        
         for(int i =0;i<n;i++){
          sum+=nums[i];
-         int rem = goal-sum;
-
+         int rem = sum-goal;
+        if(sum == goal) count++;
          if(mpp.find(rem)!=mpp.end()){
-            count += mpp[nums[i]];
+            count += mpp[rem];
          }
-         mpp[nums[i]]++;
+         mpp[sum]++;
         }
         return count;
     }
