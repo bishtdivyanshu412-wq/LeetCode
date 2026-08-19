@@ -5,23 +5,17 @@ public:
         int n = nums.size();
         int count = 0;
 
-        int i = 0;
-        int j = 0;
         int sum = 0;
-        
+        map<int,int>mpp;
+        mpp[nums[0]] = 1;
+        for(int i =0;i<n;i++){
+         sum+=nums[i];
+         int rem = goal-sum;
 
-        while(j<n){
-            sum += nums[j];
-            while(sum>goal){
-                sum -= nums[i];
-                if(sum == goal){
-                    count++;
-                }
-                i++;
-            }
-
-            if(sum == goal) count++;
-            j++;
+         if(mpp.find(rem)!=mpp.end()){
+            count += mpp[nums[i]];
+         }
+         mpp[nums[i]]++;
         }
         return count;
     }
