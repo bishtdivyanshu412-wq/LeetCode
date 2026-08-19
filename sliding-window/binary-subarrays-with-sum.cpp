@@ -7,11 +7,11 @@ public:
 
         int sum = 0;
         map<int,int>mpp;
-        
+        mpp[0] = 1;
         for(int i =0;i<n;i++){
          sum+=nums[i];
          int rem = sum-goal;
-        if(sum == goal) count++;
+        
          if(mpp.find(rem)!=mpp.end()){
             count += mpp[rem];
          }
