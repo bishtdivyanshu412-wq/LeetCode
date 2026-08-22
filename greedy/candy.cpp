@@ -1,33 +1,36 @@
 class Solution {
 public:
-    int candy(vector<int>& nums) {
-        int n = nums.size();
+    int candy(vector<int>& ratings) {
+        int n = ratings.size();
+        int sum = 1;
+        int i = 1;
 
-        int count = 0;
-        int prev = 0;
+        while (i < n) {
+            int peak = 0;
+            int down = 0;
 
-        for(int i =0;i<n;i++){
-            if(i==0){
-               if(nums[0]>nums[1]) {
-                count += 2;
-                prev = count;
-               }
-               else{
-                count +=1;
-                prev = count;
-               }
+            while (i < n && ratings[i] > ratings[i - 1]) {
+                peak++;
+                sum += peak + 1;
+                i++;
             }
-            else {
-                if(nums[i]>nums[i-1]){
-                    count+= prev+1;
-                    prev = prev+1;
-                }
-                else{
-                    count+=1;
-                    prev=1;
-                }
+
+            while (i < n && ratings[i] < ratings[i - 1]) {
+                down++;
+                sum += down;
+                i++;
+            }
+
+            if (down > 0) {
+                sum -= min(peak, down);
+            }
+
+            if (i < n && ratings[i] == ratings[i - 1]) {
+                sum++;
+                i++;
             }
         }
-        return count;
+
+        return sum;
     }
 };
