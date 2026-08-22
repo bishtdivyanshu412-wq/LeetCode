@@ -8,7 +8,7 @@ public:
         for(int i = 0 ;i<n;i++){
            if(i == 0 ){
             if(ratings[0]>ratings[1]){
-                mpp[i] = count+1;
+                mpp[i] = 2;
             }
             else mpp[i] = 1;
            }
@@ -19,7 +19,7 @@ public:
             else mpp[n-1] = 1;
            }
            else{
-            if(ratings[i]>ratings[i+1] && ratings[i] > ratings[i-1]){
+            if(ratings[i]>ratings[i+1] || ratings[i] > ratings[i-1]){
                 mpp[i] = mpp[i-1]+1;
             }
             else mpp[i] = 1;
