@@ -2,43 +2,46 @@ class Solution {
 public:
     string reorganizeString(string s) {
         int n = s.size();
-        string ans(n, ' ');
         unordered_map<char, int> mpp;
 
-        for(char c : s) {
+        for (char c : s) {
             mpp[c]++;
         }
 
-        int val = -1;
         char ch;
+        int mx = 0;
 
-        for(auto it : mpp) {
-            if(it.second > val) {
-                val = it.second;
+        for (auto it : mpp) {
+            if (it.second > mx) {
+                mx = it.second;
                 ch = it.first;
             }
         }
 
-        if(val > (n + 1) / 2) {
+        if (mx > (n + 1) / 2) {
             return "";
         }
 
+        string ans(n, ' ');
         int k = 0;
 
-        for(int i = 0; i < val; i++) {
+        for (int i = 0; i < mx; i++) {
             ans[k] = ch;
             k += 2;
         }
 
-        for(int i = 0; i < n; i++) {
-            if(s[i] == ch) continue;
+        mpp[ch] = 0;
 
-            if(k >= n) {
-                k = 1;
+        for (auto it : mpp) {
+            while (it.second > 0) {
+                if (k >= n) {
+                    k = 1;
+                }
+
+                ans[k] = it.first;
+                k += 2;
+                it.second--;
             }
-
-            ans[k] = s[i];
-            k += 2;
         }
 
         return ans;
