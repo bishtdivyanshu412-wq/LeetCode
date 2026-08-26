@@ -16,7 +16,7 @@ public:
         while(j<n){
             if(s[j] == '1') count++;
             while(count>=k){
-                if(maxlen > (j-i+1)){
+                if(maxlen >= (j-i+1)){
                     maxlen = j-i+1;
                     start = i;
                     end = j;
